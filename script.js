@@ -44,6 +44,7 @@ function displayBooks() {
     const pagesDisplay = document.createElement("p");
     const readStatus = document.createElement("p");
     const removeBtn = document.createElement("button");
+    removeBtn.addEventListener("click", removeBook);
     titleDisplay.textContent = myLibrary[i].title;
     authorDisplay.textContent = myLibrary[i].author;
     pagesDisplay.textContent = myLibrary[i].pages;
@@ -56,8 +57,18 @@ function displayBooks() {
     card.appendChild(readStatus);
     card.appendChild(removeBtn);
   }
+  myLibrary.forEach((book, index) => {
+    book.id = index;
+  });
 }
 
 function clearCards() {
   document.querySelector("#card-container").textContent = "";
+}
+
+function removeBook() {
+  const removeIndex = myLibrary.findIndex((book) => book.id === this.id);
+  myLibrary.splice(removeIndex, 1);
+  console.log(myLibrary);
+  displayBooks();
 }
