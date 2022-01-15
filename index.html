@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+    <script
+      src="https://kit.fontawesome.com/0f8decd2d7.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Library App</title>
+  </head>
+  <body>
+    <button id="add-book-btn">Add Book</button>
+    <div class="book-form-content">
+      <div class="book-form">
+        <p>Please enter the book title</p>
+        <input type="text" id="titleInput" name="title" />
+        <p>Please enter the author</p>
+        <input type="text" id="authorInput" name="author" />
+        <p>Please enter the number of pages</p>
+        <input type="number" id="pagesInput" name="pages" />
+        <p>Have you read the book?</p>
+        <input type="checkbox" id="readInput" name="read" />
+        <input
+          type="button"
+          value="Add book to library"
+          onClick="addBookToLibrary()"
+        />
+      </div>
+    </div>
+
+    <div id="card-container">
+      <!-- <div class="card">
+        <h2 class="title-display"></h2>
+        <p class="author-display"></p>
+        <p class="pages-display"></p>
+        <p class="read-status"></p> -->
+    </div>
+  </body>
+</html>
