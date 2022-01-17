@@ -4,6 +4,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=EB+Garamond&family=Oswald:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
     <script
@@ -13,31 +19,62 @@
     <title>Library App</title>
   </head>
   <body>
-    <button id="add-book-btn">Add Book</button>
-    <div class="book-form-content">
-      <div class="book-form">
-        <p>Please enter the book title</p>
-        <input type="text" id="titleInput" name="title" />
-        <p>Please enter the author</p>
-        <input type="text" id="authorInput" name="author" />
-        <p>Please enter the number of pages</p>
-        <input type="number" id="pagesInput" name="pages" />
-        <p>Have you read the book?</p>
-        <input type="checkbox" id="readInput" name="read" />
-        <input
-          type="button"
-          value="Add book to library"
-          onClick="addBookToLibrary()"
-        />
+    <header>
+      <h1 class="heading main-heading">EasyLib</h1>
+      <p class="main-heading-disc">
+        Click the "+" button to add books you have read or would like to read to
+        your library.
+      </p>
+    </header>
+    <div class="hide-show-modal">
+      <div class="modal">
+        <div class="modal-content">
+          <div class="add-book-heading-container">
+            <button class="book-form-close-btn">
+              <i class="fas fa-times"></i>
+            </button>
+            <h2 class="book-form-heading heading">Add New Book</h2>
+          </div>
+          <div class="book-form-container">
+            <div class="title-container">
+              <label for="title-input" class="input-label">Title</label>
+              <div class="title-input-group input-group">
+                <span><i class="fas fa-book-open input-icon"></i></span>
+                <input type="text" id="title-input" name="title" />
+              </div>
+            </div>
+            <div class="author-container">
+              <label for="author-input" class="input-label">Author</label>
+              <div class="author-input-group input-group">
+                <i class="fas fa-user input-icon"></i>
+                <input type="text" id="author-input" name="author" />
+              </div>
+            </div>
+            <div class="pages-container">
+              <label for="pages-input" class="input-label"
+                >Number of pages</label
+              >
+              <div class="author-input-group input-group">
+                <i class="fas fa-hashtag input-icon"></i>
+                <input type="number" id="pages-input" name="pages" />
+              </div>
+            </div>
+            <div class="read-container">
+              <label for="read-input" class="input-label read-label"
+                >Have your read the book?</label
+              >
+              <input type="checkbox" id="read-input" name="read" />
+            </div>
+            <div class="add-book-form-btn-container">
+              <input type="button" value="Add book" class="add-book-form-btn" />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-
-    <div id="card-container">
-      <!-- <div class="card">
-        <h2 class="title-display"></h2>
-        <p class="author-display"></p>
-        <p class="pages-display"></p>
-        <p class="read-status"></p> -->
+    <div class="content-container">
+      <button id="add-book-btn"><i class="fas fa-plus"></i></button>
+      <div id="card-container"></div>
     </div>
   </body>
 </html>
