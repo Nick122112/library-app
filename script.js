@@ -47,7 +47,7 @@ function displayBooks() {
     const card = document.createElement("div");
     card.setAttribute(
       "style",
-      "width: 30rem; height: 30rem; background-color: #fff; display: flex; flex-direction: column; align-items: center; border-radius: 0.5rem;"
+      "width: 30rem; background-color: #fff; display: flex; flex-direction: column; align-items: center; border-radius: 0.5rem;"
     );
     const titleDisplay = document.createElement("h2");
     titleDisplay.setAttribute(
@@ -68,7 +68,7 @@ function displayBooks() {
     readStatusBtn.setAttribute("id", myLibrary[i].id);
     readStatusBtn.setAttribute(
       "style",
-      "background-color: #48b1bf; color: #fff; border: none; font-size: 1.8rem; width: 10rem; margin-top: 1rem; padding-top: 1rem; padding-bottom: 1rem; margin-bottom: 1rem; border-radius: 0.5rem;"
+      "background-color: #06beb6; color: #fff; border: none; font-size: 1.8rem; width: 10rem; margin-top: 1rem; padding-top: 1rem; padding-bottom: 1rem; margin-bottom: 1rem; border-radius: 0.5rem;"
     );
     readStatusBtn.addEventListener("click", () => {
       console.log(readStatusBtn.id);
@@ -78,12 +78,24 @@ function displayBooks() {
       selectedBook.toggle();
       displayBooks();
     });
+    readStatusBtn.addEventListener("mouseover", () => {
+      readStatusBtn.classList.add("book-card-btn-hover");
+    });
+    readStatusBtn.addEventListener("mouseout", () => {
+      readStatusBtn.classList.remove("book-card-btn-hover");
+    });
     const removeBtn = document.createElement("button");
     removeBtn.setAttribute("id", myLibrary[i].id);
     removeBtn.setAttribute(
       "style",
-      "background-color: #48b1bf; color: #fff; border: none; font-size: 1.8rem; width: 10rem; margin-top: 1rem; margin-bottom: 1rem; padding-top: 1rem; padding-bottom: 1rem; border-radius: 0.5rem;"
+      "background-color: #06beb6; color: #fff; border: none; font-size: 1.8rem; width: 10rem; margin-top: 1rem; margin-bottom: 1rem; padding-top: 1rem; padding-bottom: 1rem; border-radius: 0.5rem;"
     );
+    removeBtn.addEventListener("mouseover", () => {
+      removeBtn.classList.add("book-card-btn-hover");
+    });
+    removeBtn.addEventListener("mouseout", () => {
+      removeBtn.classList.remove("book-card-btn-hover");
+    });
     removeBtn.addEventListener("click", removeBook);
     titleDisplay.textContent = myLibrary[i].title;
     authorDisplay.textContent = myLibrary[i].author;
@@ -124,6 +136,7 @@ const addBookFormBtn = document.querySelector(".add-book-form-btn");
 addBookFormBtn.addEventListener("click", () => {
   addBookToLibrary();
   closeModal();
+  clearForm();
 });
 
 // modal
@@ -141,14 +154,6 @@ closeModalBtn.addEventListener("click", closeModal);
 function closeModal() {
   modalDisplay.style.display = "none";
 }
-
-// readStatusBtn.addEventListener("click", toggle);
-// function toggle() {
-//   if (newBook.read === "Read") {
-//     newBook.read === "Not read";
-//     readStatusBtn.textContent === "Not read";
-//   } else if (newBook.read === "Not read") {
-//     newBook.read === "Read";
-//     readStatusBtn.textContent === "Read";
-//   }
-// }
+function clearForm() {
+  document.querySelector("form").reset();
+}
