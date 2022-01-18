@@ -12,6 +12,16 @@ function Book(title, author, pages, read) {
   };
 }
 
+Book.prototype.toggle = function () {
+  if (this.read === "Read") {
+    this.read = "Not read";
+  } else if (this.read === "Not read") {
+    this.read = "Read";
+  }
+};
+
+console.log(Book.prototype);
+
 function addBookToLibrary() {
   let newBook = new Book();
   newBook.title = document.getElementById("title-input").value;
@@ -35,17 +45,49 @@ function displayBooks() {
       myLibrary.shift();
     }
     const card = document.createElement("div");
-    card.setAttribute("style", "width: 20rem height: 20rem");
+    card.setAttribute(
+      "style",
+      "width: 30rem; height: 30rem; background-color: #fff; display: flex; flex-direction: column; align-items: center; border-radius: 0.5rem;"
+    );
     const titleDisplay = document.createElement("h2");
+    titleDisplay.setAttribute(
+      "style",
+      "font-size: 2.8rem; width: 100%; text-align: center; background: #48b1bf; color: #fff; padding: 1rem 0; border-top-left-radius: 0.5rem; border-top-right-radius: 0.5rem"
+    );
     const authorDisplay = document.createElement("p");
+    authorDisplay.setAttribute(
+      "style",
+      "font-size: 2.4rem; margin-top: 1rem; margin-bottom: 1rem;"
+    );
     const pagesDisplay = document.createElement("p");
+    pagesDisplay.setAttribute(
+      "style",
+      "font-size: 2.4rem; margin-top: 1rem; margin-bottom: 1rem;"
+    );
     const readStatusBtn = document.createElement("button");
+    readStatusBtn.setAttribute("id", myLibrary[i].id);
+    readStatusBtn.setAttribute(
+      "style",
+      "background-color: #48b1bf; color: #fff; border: none; font-size: 1.8rem; width: 10rem; margin-top: 1rem; padding-top: 1rem; padding-bottom: 1rem; margin-bottom: 1rem; border-radius: 0.5rem;"
+    );
+    readStatusBtn.addEventListener("click", () => {
+      console.log(readStatusBtn.id);
+      const selectedBook = myLibrary.find(
+        (book) => book.id === readStatusBtn.id
+      );
+      selectedBook.toggle();
+      displayBooks();
+    });
     const removeBtn = document.createElement("button");
     removeBtn.setAttribute("id", myLibrary[i].id);
+    removeBtn.setAttribute(
+      "style",
+      "background-color: #48b1bf; color: #fff; border: none; font-size: 1.8rem; width: 10rem; margin-top: 1rem; margin-bottom: 1rem; padding-top: 1rem; padding-bottom: 1rem; border-radius: 0.5rem;"
+    );
     removeBtn.addEventListener("click", removeBook);
     titleDisplay.textContent = myLibrary[i].title;
     authorDisplay.textContent = myLibrary[i].author;
-    pagesDisplay.textContent = myLibrary[i].pages;
+    pagesDisplay.textContent = `${myLibrary[i].pages} pages`;
     readStatusBtn.textContent = myLibrary[i].read;
     removeBtn.textContent = "Remove Book";
     document.querySelector("#card-container").appendChild(card);

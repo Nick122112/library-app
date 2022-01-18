@@ -60,8 +60,15 @@ header {
   align-self: center;
   border: none;
   border-radius: 0.5rem;
-  margin-top: 1rem;
+  margin-top: 1.5rem;
   color: #48b1bf;
+}
+
+#card-container {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
 }
 
 .hide-show-modal {
